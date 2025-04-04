@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Collaborative Code Editor</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="container">
+    <!-- Room Section -->
+    <section id="room-section" class="room-section">
+      <h1>Collaborative Code Editor</h1>
+      <p class="description">Create or join a room to start coding collaboratively.</p>
+      <input type="text" id="username" placeholder="Enter your username" aria-label="Enter your username" required />
+      <div class="button-container">
+        <button id="create-room" aria-label="Create a new room">Create Room</button>
+        <button id="join-room" aria-label="Join an existing room">Join Room</button>
+      </div>
+      <input type="text" id="room-id" placeholder="Enter Room ID to join" aria-label="Enter Room ID to join" />
+    </section>
+    
+    <!-- Token Request and Release -->
+    <section id="token-section" class="token-section hidden">
+      <button id="request-token" aria-label="Request token to edit">Request Token</button>
+      <button id="release-token" aria-label="Release token">Release Token</button>
+      <p id="token-status">Token Status: None</p>
+    </section>
+
+    <!-- Editor Section -->
+    <section id="editor-section" class="editor-section hidden">
+      <h2>Room ID: <span id="current-room-id"></span></h2>
+      <div id="members-list" class="members-list">
+        <h3>Members In Room</h3>
+        <ul id="members"></ul>
+      </div>
+      <div id="editor-container" class="editor-container">
+        <textarea id="code-editor" placeholder="Start coding here..." aria-label="Code editor"></textarea>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 All rights reserved by Rachit.</p>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:officialrachit123@gmail.com">officialrachit123@gmail.com</a></p>
+      <p>Personal Website: <a href="https://rrachiit.netlify.app/" target="_blank">rrachiit.netlify.app</a></p>
+      <p>Contact No: 6265626380</p>
+    </div>
+  </footer>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
