@@ -2,24 +2,29 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import ContestItem from '../ContestItem/ContestItem';
 import './ContestList.css';
-class ContestList extends Component{
+
+class ContestList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data:[]
+            data: []
         };
     }
+
     unmounted = false;
+
     componentDidMount() {
-        axios.get('http://localhost:5000/api/contests')
+        axios.get(`${process.env.REACT_APP_API_URL}/api/contests`)
             .then((data) => {
-                this.setState({ data: data.data.data })
+                this.setState({ data: data.data.data });
             })
-        .catch((err) => console.log(err));
+            .catch((err) => console.log(err));
     }
+
     componentWillUnmount() {
         this.unmounted = true;
     }
+
     render() {
         let contestListElements = this.state.data.map((element, index) => {
             if (this.props.activeParameter !== element.type &&
@@ -33,6 +38,7 @@ class ContestList extends Component{
                 />
             );
         });
+
         return (
             <div className="contest-list">
                 {contestListElements}
@@ -40,4 +46,5 @@ class ContestList extends Component{
         );
     }
 }
+
 export default ContestList;
